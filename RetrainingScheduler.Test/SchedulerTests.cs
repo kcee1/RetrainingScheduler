@@ -75,12 +75,14 @@ namespace RetrainingScheduler.Test
             var tracks = scheduler.GenerateSchedule();
 
             int totalTime = 0;
-            foreach (var session in tracks[0].MorningSessions)
+            foreach(var session in tracks[0].MorningSessions)
             {
                 totalTime += session.Duration;
             }
 
             Assert.True(totalTime <= timeLimit);
+
+            
         }
 
     }

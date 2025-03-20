@@ -15,6 +15,7 @@ namespace RetrainingScheduler
         static void Main(string[] args)
         {
             // List of available training sessions.
+
             List<Session> sessions = new List<Session>
             {
                 new Session("Organising Parents for Academy Improvements", "60min"),
@@ -37,7 +38,25 @@ namespace RetrainingScheduler
                 new Session("So They Say You're a Devil Worshipper", "60min"),
                 new Session("Two-Streams or Not Two-Streams", "30min"),
                 new Session("Piped Water", "30min")
-            };
+            }; 
+
+           /* List<Session> sessions = new List<Session>();
+            bool IsRecievingInput = true;
+
+            while(IsRecievingInput)
+            {
+                Console.WriteLine("Enter the title of the session or 'exit' to stop adding sessions:");
+                string title = Console.ReadLine();
+                if (title.ToLower() == "exit")
+                {
+                    IsRecievingInput = false;
+                    break;
+                }
+                Console.WriteLine("Enter the duration of the session in minutes or 'lightning' for 5 minutes:");
+                string duration = Console.ReadLine();
+                sessions.Add(new Session(title, duration));
+            } */
+
 
             // Create a scheduler instance and generate the schedule.
             Scheduler scheduler = new Scheduler(sessions);
@@ -58,7 +77,15 @@ namespace RetrainingScheduler
                 PrintSessions(track.AfternoonSessions, ref currentTime);
 
                 // Print sharing session.
-                Console.WriteLine($"{currentTime:hh\\:mm}PM | Sharing Session");
+                if(currentTime < new TimeSpan(16, 0, 0))
+                {
+                    Console.WriteLine($"{new TimeSpan(16, 10, 0):hh\\:mm}PM | Sharing Session");
+                }
+                else
+                {
+                    Console.WriteLine($"{currentTime:hh\\:mm}PM | Sharing Session");
+                }
+               //     Console.WriteLine($"{currentTime:hh\\:mm}PM | Sharing Session");
                 Console.WriteLine();
                 trackNumber++;
             }

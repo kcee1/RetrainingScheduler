@@ -31,6 +31,7 @@ namespace RetrainingScheduler.CustomMethod
             _sessions = sessions.OrderByDescending(s => s.Duration).ToList();
         }
 
+
         /// <summary>
         /// Generates the schedule by allocating sessions into tracks.
         /// </summary>
@@ -47,6 +48,7 @@ namespace RetrainingScheduler.CustomMethod
             }
             return tracks;
         }
+
 
         /// <summary>
         /// Allocates training sessions into a specified time slot (morning or afternoon) based on available time.
